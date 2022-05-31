@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react-native';
 import React from 'react';
-import DelayedList from '../components/DelayedList';
+import DelayedList from '../components/delayed/DelayedList';
 
 const delays = [
   {

@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { ScrollView, Text, TouchableOpacity } from "react-native";
 import { StyleSheet } from "react-native";
 import { Card, CardTitle, CardContent } from 'react-native-material-cards';
-import Delayed from "../interfaces/delayed";
-import { Typography } from "../styles";
-import delayedModel from "../models/delayedModel";
-import dateFormatter from "../models/dateFormatter";
+import Delayed from "../../interfaces/delayed";
+import { Base, Typography } from "../../styles";
+import delayedModel from "../../models/delayedModel";
+import dateFormatter from "../../models/dateFormatter";
 
 export default function DelayedList() {
   const [delayed, setDelayed] = useState<Delayed[]>([]);
@@ -35,7 +35,7 @@ export default function DelayedList() {
   });
 
   return (
-    <ScrollView>
+    <ScrollView style={ Base.base }>
       <Text style={ Typography.header1 }>Førseningar</Text>
       { delayedList }
     </ScrollView>
