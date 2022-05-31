@@ -10,8 +10,8 @@ const station = {
       return await requestModel.request(`${config.train.base_url}/${urlPath}`, {});      
     } catch (error) {
       console.log(error);
-      return [];
     }
+    return [];
   }
 }
 

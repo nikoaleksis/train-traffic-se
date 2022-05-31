@@ -1,10 +1,12 @@
+import Station from "./station";
+
 export default interface Delayed {
-  AcivityId: string,
+  ActivityId: string,
   ActivityType: string,
-  AdvertisedTimeAtLocation: Date,
+  AdvertisedTimeAtLocation: string,
   AdvertisedTrainIdent: string,
   Canceled: boolean,
-  EstimatedTimeAtLocation: Date,
-  FromLocation: Location[],
-  ToLocation: Location[],
+  EstimatedTimeAtLocation: string,
+  FromLocation: Station[],
+  ToLocation: Station[],
 }

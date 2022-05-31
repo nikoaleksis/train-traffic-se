@@ -1,21 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
-import { Base, Typography } from './styles';
-import Station from './interfaces/station';
-import stationModel from './models/stationModel';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Base } from './styles';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import DelayedList from './components/DelayedList';
+import {LogBox} from "react-native";
+
+LogBox.ignoreLogs([
+"ViewPropTypes will be removed",
+"ColorPropType will be removed",
+]);
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const [stations, setStations] = useState<Station[]>([]);
-
-  useEffect(() => {
-    (async () => setStations(await stationModel.getStations()))();
-  }, []);
 
   return (
-    <View style={Base.base}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={ Base.base }>
+      <DelayedList />
+      {/*<NavigationContainer>
+        <Tab.Navigator>
+          <Tab.Screen name="delays">
+
+          </Tab.Screen>
+        </Tab.Navigator>
+  </NavigationContainer>*/}
+    </SafeAreaView>
   );
 }
