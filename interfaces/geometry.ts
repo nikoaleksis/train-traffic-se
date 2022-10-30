@@ -1,3 +1,10 @@
-export default interface Geometry {
-  coordinates: string,
+interface Geometry {
+  latitude: number,
+  longitude: number,
 }
+
+interface PreTransformationGeometry {
+  WGS84: string
+}
+
+export {Geometry, PreTransformationGeometry}

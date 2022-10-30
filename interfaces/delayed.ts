@@ -1,12 +1,31 @@
-import Station from "./station";
+import { PreTransformationStation, Station } from "./station";
 
-export default interface Delayed {
+type DelayedStationData = {
+  LocationName: string,
+  Priority: number,
+  Order: number,
+}
+
+interface Delayed {
+  activityId: string,
+  activityType: string,
+  advertisedTimeAtLocation: string,
+  advertisedTrainIdent: string,
+  canceled: boolean,
+  estimatedTimeAtLocation: string,
+  fromLocation?: Station,
+  toLocation?: Station,
+}
+
+interface PreTransformationDelayed {
   ActivityId: string,
   ActivityType: string,
   AdvertisedTimeAtLocation: string,
+  EstimatedTimeAtLocation: string,
   AdvertisedTrainIdent: string,
   Canceled: boolean,
-  EstimatedTimeAtLocation: string,
-  FromLocation: Station[],
-  ToLocation: Station[],
+  FromLocation: DelayedStationData[],
+  ToLocation: DelayedStationData[],
 }
+
+export {Delayed, PreTransformationDelayed}

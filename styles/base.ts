@@ -3,9 +3,16 @@ import { ViewStyle } from "react-native";
 export const base: ViewStyle = {
   flex: 1,
   backgroundColor: '#333',
-  //alignItems:'center',
-  //justifyContent:'center',
+  //alignIteevenlyter',
+  //justifevenlyt:'center',
 };
+
+export const container: ViewStyle = {
+  flex: 1,
+  backgroundColor: '#fff',
+  alignItems: 'center',
+  justifyContent: 'center',
+}
 
 export const round: ViewStyle = {
   width: 320, 
@@ -15,4 +22,20 @@ export const round: ViewStyle = {
   borderRadius: 160,
   borderWidth: 3,
   borderColor: '#fff'
+}
+
+export const navbar: ViewStyle = {
+  flex: 16,
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "space-evenly",
+  backgroundColor: "#eee",
+  marginBottom: 5,
+}
+
+export const navbarItem: ViewStyle = {
+  // borderRightColor: "#eee",
+  // borderWidth: 2,
+  flex: 1,
+  alignItems: "center",
 }

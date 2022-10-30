@@ -7,6 +7,13 @@ const dateFormatter = {
     date.setUTCHours(date.getUTCHours() + timeZoneDiff);
     
     return format(date, "yyy-MM-dd HH:mm");
+  },
+  formatDateStrTimeOnly: function formatDateStrTimeOnly(dateStr: string): string {
+    const date = new Date(dateStr);
+    const timeZoneDiff = 2; // +2 timezone in stockholm
+    date.setUTCHours(date.getUTCHours() + timeZoneDiff);
+    
+    return format(date, "HH:mm");
   }
 }
 

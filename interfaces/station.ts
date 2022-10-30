@@ -1,8 +1,17 @@
-import Geometry from "./geometry";
+import { Geometry, PreTransformationGeometry } from "./geometry";
 
-export default interface Station {
+interface Station {
+  advertisedLocationName: string,
+  geometry: Geometry,
+  locationSignature: string,
+  platformLine: string[],
+}
+
+interface PreTransformationStation {
   AdvertisedLocationName: string,
-  Geometry: Geometry,
+  Geometry: PreTransformationGeometry,
   LocationSignature: string,
   PlatformLine: string[],
 }
+
+export {Station, PreTransformationStation}
