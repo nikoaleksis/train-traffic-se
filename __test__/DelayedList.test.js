@@ -1,59 +1,69 @@
 import { render } from '@testing-library/react-native';
 import React from 'react';
 import DelayedList from '../components/delayed/DelayedList';
+import { DelayedCurrentView } from '../enum/delayedCurrentView';
 
 const delays = [
   {
-    AdvertisedTrainIdent: "421",
-    FromLocation: [
+    advertisedTrainIdent: "421",
+    fromLocation: [
       {
-        AdvertisedLocationName: "Testkøping"
+        advertisedLocationName: "Testkøping"
       }
     ],
-    ToLocation: [
+    toLocation: [
       {
-        AdvertisedLocationName: "Testborg"
+        advertisedLocationName: "Testborg"
       }
     ],
-    AdvertisedTimeAtLocation: new Date(),
-    EstimatedTimeAtLocation: new Date(),
+    advertisedTimeAtLocation: new Date(),
+    estimatedTimeAtLocation: new Date(),
 
   },
   {
-    AdvertisedTrainIdent: "420",
-    FromLocation: [
+    advertisedTrainIdent: "420",
+    fromLocation: [
       {
-        AdvertisedLocationName: "Testkøping"
+        advertisedLocationName: "Testkøping"
       }
     ],
-    ToLocation: [
+    toLocation: [
       {
-        AdvertisedLocationName: "Testborg"
+        advertisedLocationName: "Testborg"
       }
     ],
-    AdvertisedTimeAtLocation: new Date(),
-    EstimatedTimeAtLocation: new Date(),
-
+    advertisedTimeAtLocation: new Date(),
+    estimatedTimeAtLocation: new Date(),
   },
 ];
 
+const mockSetDelays = () => undefined;
+
+const mockSetCurrentView = () => undefined;
+
+const mockSetInitialRegion = () => undefined;
+
 const delayedList = (
-  <DelayedList />
+  <DelayedList
+    delayed={delays}
+    setDelayed={mockSetDelays}
+    currentView={DelayedCurrentView.LIST}
+    setCurrentView={mockSetCurrentView}
+    setInitialRegion={mockSetInitialRegion}
+  />
 );
 
-test("It should render card components depending on size of delayed list", async () => {
-  
-  jest
-    .spyOn(React, 'useState')
-    .mockImplementationOnce(() => React.useState(delays));
-  
-  jest
+
+test(
+  "It should render card components depending on size of delayed list", 
+  async () => {
+    jest
     .spyOn(React, 'useEffect')
     .mockImplementationOnce(() => React.useEffect(() => false));
-  
-  const { getAllByA11yLabel, debug } = render(delayedList);
+    
+    const { getAllByA11yLabel, debug } = render(delayedList);
+    
+    const components = await getAllByA11yLabel("Tryck før att se transportstræckan");
 
-  const components = await getAllByA11yLabel("Tryck før att se transportstræckan");
-
-  expect(components.length).toBe(2);
+    expect(components.length).toBe(2);
 });

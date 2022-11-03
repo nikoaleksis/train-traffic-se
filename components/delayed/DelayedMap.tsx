@@ -24,17 +24,24 @@ export default function DelayedMap(
     myLocation: LocationObject | undefined
   }
 ) {
+
   useEffect(() => {
     (async () => {
       setDelayed(await delayedModel.getDelayed());
       })();
   }, [currentView === DelayedCurrentView.MAP]);
 
+  function hasClickedMapNavbarIcon() {
+    return myLocation?.coords.latitude === initialRegion.latitude && 
+      myLocation.coords.longitude === initialRegion.longitude;
+  }
+
   const fromMarkers = delayed.map((delayed: Delayed, index: number) => {
     const station = delayed.fromLocation;
     
     return (
       <Marker
+        accessibilityLabel="Avgång"
         key={index}
         coordinate={{
           latitude: station?.geometry.latitude ?? 0,
@@ -52,6 +59,7 @@ export default function DelayedMap(
     
     return (
       <Marker
+        accessibilityLabel="Ankomst"
         key={index}
         coordinate={{
           latitude: station?.geometry.latitude ?? 0,
@@ -64,7 +72,8 @@ export default function DelayedMap(
   });
 
   const myLocationMarker =  myLocation ? 
-    (<Marker 
+    (<Marker
+      accessibilityLabel="Min Position"
       title="Min position"
       pinColor="#0f0"
       coordinate={{
@@ -98,11 +107,12 @@ export default function DelayedMap(
   return (
     <ScrollView style={Base.base}>
        <MapView
+          testID="RouteMap"
           style={ styles.map }
-          initialRegion={ myLocation ?
+          initialRegion={ hasClickedMapNavbarIcon() ?
             {
-              latitude: myLocation.coords.latitude,
-              longitude: myLocation.coords.longitude,
+              latitude: myLocation?.coords.latitude ?? 59.1,
+              longitude: myLocation?.coords.longitude ?? 11.1,
               latitudeDelta: 1,
               longitudeDelta: 1
             } 

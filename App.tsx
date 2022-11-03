@@ -6,7 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {LogBox} from "react-native";
 import Navigation from './components/Navigation';
 import Home from "./components/Home";
-import Delayed from './components/delayed/Delayed';
+import Delayed from './components/delayed/DelayedBase';
 import DelayedList from './components/delayed/DelayedList';
 
 const Tab = createBottomTabNavigator();

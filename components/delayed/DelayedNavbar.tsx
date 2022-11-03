@@ -6,12 +6,10 @@ import { Delayed } from "../../interfaces/delayed";
 import { DelayedCurrentView } from "../../enum/delayedCurrentView";
 
 export default function DelayedNavbar(
-  {currentView, setCurrentView, setDelayed} :  
-  {currentView: DelayedCurrentView, setCurrentView : (currentView: DelayedCurrentView) => void, setDelayed : (delayed: Delayed[]) => void}) {
+  {currentView, setCurrentView} :  
+  {currentView: DelayedCurrentView, setCurrentView : (currentView: DelayedCurrentView) => void }) {
   
   const updateView = async (newView: DelayedCurrentView) => {
-    const delayed = await delayedModel.getDelayed();
-    setDelayed(delayed);
     setCurrentView(newView);
   }
   
@@ -20,6 +18,7 @@ export default function DelayedNavbar(
     style={Base.navbar}
   >
     <TouchableOpacity
+      accessibilityLabel="Klicka før att byta meny"
       style={[
         Base.navbarItem, 
         {borderRightWidth: 2, borderColor: "#222"}, 
@@ -30,6 +29,7 @@ export default function DelayedNavbar(
       <FontAwesome name="list-alt" size={60} color="black" />
     </TouchableOpacity>
     <TouchableOpacity
+      accessibilityLabel="Klicka før att byta meny"
       style={[
         Base.navbarItem, 
         {borderRightWidth: 2, borderColor: "#222"}, 
